@@ -34,6 +34,7 @@ obj-$(CONFIG_MSM_WATCHDOG_V2) += watchdog_v2.o
 obj-$(CONFIG_MEM_SHARE_QMI_SERVICE)		+= memshare/
 obj-$(CONFIG_MSM_SPM_V2) += spm-v2.o spm_devices.o
 obj-y		+= socinfo.o
+
 obj-$(CONFIG_STATE_HELPER)		+= state_helper.o
 obj-$(CONFIG_MSM_LIMITER) += msm_limiter.o
 obj-$(CONFIG_MSM_HOTPLUG) += msm_hotplug.o
@@ -42,8 +43,22 @@ obj-$(CONFIG_BRICKED_HOTPLUG) += bricked_hotplug.o
 
 obj-$(CONFIG_STATE_NOTIFIER)		+= state_notifier.o
 
+obj-$(CONFIG_MSM_PIL) += peripheral-loader.o
+obj-$(CONFIG_MSM_PIL_SSR_GENERIC) += subsys-pil-tz.o
+obj-$(CONFIG_MSM_PIL) += scm-pas.o
+obj-$(CONFIG_MSM_PIL_MSS_QDSP6V5) += pil-q6v5.o pil-msa.o pil-q6v5-mss.o
+obj-$(CONFIG_MSM_PIL_PRONTO) += pil-pronto.o
+obj-$(CONFIG_MSM_PIL_FEMTO) += pil-q6v5.o pil-msa.o pil-femto-modem.o
+
 obj-$(CONFIG_MSM_OCMEM) += ocmem.o ocmem_allocator.o ocmem_notifier.o
 obj-$(CONFIG_MSM_OCMEM) += ocmem_sched.o ocmem_api.o ocmem_rdm.o ocmem_core.o
+
+ifdef CONFIG_MSM_SUBSYSTEM_RESTART
+	obj-y += subsystem_notif.o
+	obj-y += subsystem_restart.o
+	obj-y += ramdump.o
+endif
+obj-$(CONFIG_MSM_SYSMON_COMM) += sysmon.o
 
 obj-$(CONFIG_QCOM_EARLY_RANDOM)	+= early_random.o
 
