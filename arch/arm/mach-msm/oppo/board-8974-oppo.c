@@ -36,7 +36,7 @@
 #include <linux/msm_ion.h>
 #endif
 #include <mach/msm_memtypes.h>
-#include <mach/msm_smd.h>
+#include <soc/qcom/smd.h>
 #include <mach/restart.h>
 #include <soc/qcom/socinfo.h>
 #include <soc/qcom/rpm-smd.h>
