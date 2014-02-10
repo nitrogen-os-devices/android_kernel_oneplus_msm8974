@@ -18,8 +18,8 @@
 #include <linux/delay.h>
 #include <linux/of.h>
 #include <linux/iommu.h>
-#include <mach/iommu.h>
-#include <mach/iommu_domains.h>
+#include <linux/qcom_iommu.h>
+#include <linux/msm_iommu_domains.h>
 #include <soc/qcom/ocmem.h>
 #include <soc/qcom/scm.h>
 #include <soc/qcom/subsystem_restart.h>

@@ -43,7 +43,7 @@
 #include <mach/hardware.h>
 #include <linux/msm-bus.h>
 #include <linux/msm-bus-board.h>
-#include <mach/iommu.h>
+#include <linux/qcom_iommu.h>
 #include <linux/msm_iommu_domains.h>
 #include <mach/msm_memtypes.h>
 #include <linux/regulator/rpm-smd-regulator.h>
