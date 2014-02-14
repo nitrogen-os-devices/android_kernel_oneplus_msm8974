@@ -49,7 +49,7 @@
 #include <linux/qpnp/qpnp-adc.h>
 
 #include <mach/msm_xo.h>
-#include <mach/msm_bus.h>
+#include <linux/msm-bus.h>
 #include <mach/rpm-regulator.h>
 
 #define MSM_USB_BASE	(motg->regs)

@@ -41,8 +41,8 @@
 #include <mach/board.h>
 #include <linux/clk/msm-clk.h>
 #include <mach/hardware.h>
-#include <mach/msm_bus.h>
-#include <mach/msm_bus_board.h>
+#include <linux/msm-bus.h>
+#include <linux/msm-bus-board.h>
 #include <mach/iommu.h>
 #include <linux/msm_iommu_domains.h>
 #include <mach/msm_memtypes.h>

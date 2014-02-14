@@ -22,8 +22,8 @@
 
 #include <asm/cacheflush.h>
 
-#include <mach/msm_bus.h>
-#include <mach/msm_bus_board.h>
+#include <linux/msm-bus-board.h>
+#include <linux/msm-bus.h>
 #include "scm-pas.h"
 
 #define PAS_INIT_IMAGE_CMD	1

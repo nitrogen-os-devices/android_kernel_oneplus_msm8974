@@ -10,7 +10,7 @@
  * GNU General Public License for more details.
  */
 
-#include <mach/msm_bus_board.h>
+#include <linux/msm-bus-board.h>
 
 #ifndef __MSM_SCM_PAS_H
 #define __MSM_SCM_PAS_H

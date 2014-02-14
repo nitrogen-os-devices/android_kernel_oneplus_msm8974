@@ -21,8 +21,8 @@
 #include <linux/completion.h>
 #include <linux/wait.h>
 #include <linux/workqueue.h>
-#include <mach/msm_bus.h>
-#include <mach/msm_bus_board.h>
+#include <linux/msm-bus.h>
+#include <linux/msm-bus-board.h>
 #include <soc/qcom/ocmem.h>
 #include <media/v4l2-dev.h>
 #include <media/v4l2-device.h>
