@@ -548,6 +548,7 @@ struct usb_gadget {
 	u8				usb_core_id;
 	bool				l1_supported;
 	bool				streaming_enabled;
+        u32				xfer_isr_count;
 };
 
 static inline void set_gadget_data(struct usb_gadget *gadget, void *data)
