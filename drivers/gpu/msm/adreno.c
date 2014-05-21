@@ -1858,9 +1858,13 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	if (status)
 		goto error_irq_off;
 
+<<<<<<< HEAD
 	status = adreno_perfcounter_start(adreno_dev);
 	if (status)
 		goto error_rb_stop;
+=======
+	adreno_clear_gpu_halt(adreno_dev);
+>>>>>>> 563b4ba... msm: kgsl: Avoid race conditions with GPU halt variable
 
 	/* Start the dispatcher */
 	adreno_dispatcher_start(device);
