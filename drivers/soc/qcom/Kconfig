@@ -379,6 +379,12 @@ config MSM_OCMEM_POWER_DISABLE
 	  Enable this configuration if OCMEM is being exclusively
 	  used as GMEM or OCIMEM.
 
+config MSM_SHARED_HEAP_ACCESS
+	bool "Shared Heap access"
+	help
+	 Enable support to provide access to clients to certain HLOS regions
+	 which are protected by the secure environment.
+
 source "drivers/soc/qcom/memshare/Kconfig"
 
 endif # ARCH_MSM

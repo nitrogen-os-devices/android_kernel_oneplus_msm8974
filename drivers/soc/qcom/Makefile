@@ -46,3 +46,4 @@ obj-$(CONFIG_MSM_OCMEM) += ocmem_sched.o ocmem_api.o ocmem_rdm.o ocmem_core.o
 
 obj-$(CONFIG_QCOM_EARLY_RANDOM)	+= early_random.o
 
+obj-$(CONFIG_MSM_SHARED_HEAP_ACCESS) += shared_memory.o
