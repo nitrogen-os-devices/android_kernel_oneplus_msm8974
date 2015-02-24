@@ -351,4 +351,3 @@ config PARTIALRESUME
 	  Partial resume will occur only if all wakeup sources have
 	  partial-resume handlers associated with them, and they all return
 	  true.
-
