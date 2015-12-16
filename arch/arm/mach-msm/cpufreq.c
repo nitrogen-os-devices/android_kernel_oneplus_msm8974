@@ -377,10 +377,13 @@ static struct cpufreq_frequency_table *cpufreq_parse_dt(struct device *dev,
 			GFP_KERNEL);
 
 	if (!dts_freq_table)
-		return -ENOMEM;
+		return ERR_PTR(-ENOMEM);
 
-	for (i = 0, j = 0; i < nf; i++, j += 3)
-		dts_freq_table[i].frequency = data[j];
+	*dts_freq_table = *ftbl;
+
+	for (i = 0; i < nf; i++)
+		dts_freq_table[i].frequency = data[i];
+
 	dts_freq_table[i].frequency = CPUFREQ_TABLE_END;
 #endif
 
