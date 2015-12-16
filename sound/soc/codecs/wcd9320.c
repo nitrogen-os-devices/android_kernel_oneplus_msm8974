@@ -3178,7 +3178,7 @@ static int taiko_codec_enable_micbias(struct snd_soc_dapm_widget *w,
 		}
 		break;
 	case SND_SOC_DAPM_POST_PMU:
-		usleep_range(20000, 20000);
+		usleep_range(5000, 5100);
 		/* Let MBHC module know so micbias is on */
 		wcd9xxx_resmgr_notifier_call(&taiko->resmgr, e_post_on);
 		break;
@@ -6789,7 +6789,7 @@ static const struct wcd9xxx_reg_mask_val taiko_reg_defaults[] = {
 	TAIKO_REG_VAL(TAIKO_A_CDC_CONN_MAD, 0x01),
 
 	/* Set HPH Path to low power mode */
-	TAIKO_REG_VAL(TAIKO_A_RX_HPH_BIAS_PA, 0x55),
+	TAIKO_REG_VAL(TAIKO_A_RX_HPH_BIAS_PA, 0x57),
 
 	/* BUCK default */
 	TAIKO_REG_VAL(WCD9XXX_A_BUCK_CTRL_CCL_4, 0x51),
