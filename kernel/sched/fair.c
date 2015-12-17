@@ -3282,7 +3282,7 @@ static int move_tasks(struct lb_env *env)
 
 		move_task(p, env);
 		pulled++;
-		env->imbalance -= load;
+		env->load_move -= load;
 
 #ifdef CONFIG_PREEMPT
 		/*
