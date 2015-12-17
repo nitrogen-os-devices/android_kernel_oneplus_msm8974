@@ -955,6 +955,7 @@ static void extract_buf(struct entropy_store *r, __u8 *out)
 		hash.l[i] ^= v;
 	}
 
+	memcpy(out, &hash, EXTRACT_SIZE);
 	memzero_explicit(&hash, sizeof(hash));
 }
 
