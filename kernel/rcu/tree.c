@@ -2685,7 +2685,7 @@ void synchronize_sched_expedited(void)
 		s = atomic_long_read(&rsp->expedited_done);
 		if (ULONG_CMP_GE((ulong)s, (ulong)firstsnap)) {
 			/* ensure test happens before caller kfree */
-			smp_mb__before_atomic(); /* ^^^ */
+			smp_mb__before_atomic_inc(); /* ^^^ */
 			atomic_long_inc(&rsp->expedited_workdone1);
 			return;
 		}
@@ -2703,7 +2703,7 @@ void synchronize_sched_expedited(void)
 		s = atomic_long_read(&rsp->expedited_done);
 		if (ULONG_CMP_GE((ulong)s, (ulong)firstsnap)) {
 			/* ensure test happens before caller kfree */
-			smp_mb__before_atomic(); /* ^^^ */
+			smp_mb__before_atomic_inc(); /* ^^^ */
 			atomic_long_inc(&rsp->expedited_workdone2);
 			return;
 		}
@@ -2732,7 +2732,7 @@ void synchronize_sched_expedited(void)
 		s = atomic_long_read(&rsp->expedited_done);
 		if (ULONG_CMP_GE((ulong)s, (ulong)snap)) {
 			/* ensure test happens before caller kfree */
-			smp_mb__before_atomic(); /* ^^^ */
+			smp_mb__before_atomic_inc(); /* ^^^ */
 			atomic_long_inc(&rsp->expedited_done_lost);
 			break;
 		}

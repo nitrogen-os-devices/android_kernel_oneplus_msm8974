@@ -73,11 +73,7 @@
 #include <linux/slab.h>
 #include <linux/init_task.h>
 #include <linux/binfmts.h>
-<<<<<<< HEAD
-=======
-#include <linux/cpufreq.h>
 #include <linux/context_tracking.h>
->>>>>>> dd8b65a... context_tracking: New context tracking susbsystem
 
 #include <asm/switch_to.h>
 #include <asm/tlb.h>
@@ -8492,7 +8488,6 @@ struct cgroup_subsys cpu_cgroup_subsys = {
 
 #endif	/* CONFIG_CGROUP_SCHED */
 
-<<<<<<< HEAD
 #ifdef CONFIG_CGROUP_CPUACCT
 
 /*
