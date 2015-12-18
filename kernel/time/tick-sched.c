@@ -101,7 +101,7 @@ static ktime_t tick_init_jiffy_update(void)
 
 	write_seqlock(&jiffies_lock);
 	/* Did we start the jiffies update yet ? */
-	if (last_jiffies_update.tv64 == 0)>>>>
+	if (last_jiffies_update.tv64 == 0)
 		last_jiffies_update = tick_next_period;
 	period = last_jiffies_update;
 	write_sequnlock(&jiffies_lock);
