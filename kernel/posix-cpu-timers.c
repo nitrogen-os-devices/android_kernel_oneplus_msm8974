@@ -9,12 +9,8 @@
 #include <asm/uaccess.h>
 #include <linux/kernel_stat.h>
 #include <trace/events/timer.h>
-<<<<<<< HEAD
-=======
-#include <linux/random.h>
 #include <linux/tick.h>
 #include <linux/workqueue.h>
->>>>>>> 9adca5f... posix_timers: Kick full dynticks CPUs when a posix cpu timer is armed
 
 /*
  * Called after updating RLIMIT_CPU to run cpu timer and update
