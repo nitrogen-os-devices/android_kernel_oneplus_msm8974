@@ -391,13 +391,12 @@ static int sendcmd(struct adreno_device *adreno_dev,
 	struct adreno_dispatcher *dispatcher = &adreno_dev->dispatcher;
 	int ret;
 
-	kgsl_mutex_lock(&device->mutex, &device->mutex_owner);
-	if (adreno_gpu_halt(adreno_dev) != 0) {
-		kgsl_mutex_unlock(&device->mutex, &device->mutex_owner);
+	if (0 != adreno_gpu_halt(adreno_dev))
 		return -EINVAL;
-	}
 
 	dispatcher->inflight++;
+
+	kgsl_mutex_lock(&device->mutex, &device->mutex_owner);
 
 	if (dispatcher->inflight == 1 &&
 			!test_bit(ADRENO_DISPATCHER_POWER, &dispatcher->priv)) {
@@ -425,7 +424,7 @@ static int sendcmd(struct adreno_device *adreno_dev,
 
 			if (!test_and_set_bit(ADRENO_DISPATCHER_ACTIVE,
 				&dispatcher->priv))
-				INIT_COMPLETION(dispatcher->idle_gate);
+				init_completion(&dispatcher->idle_gate);
 		} else {
 			kgsl_active_count_put(device);
 			clear_bit(ADRENO_DISPATCHER_POWER, &dispatcher->priv);
@@ -1440,7 +1439,7 @@ replay:
 	/* make sure halt is not set during recovery */
 
 	halt = adreno_gpu_halt(adreno_dev);
-	adreno_clear_gpu_halt(adreno_dev);
+	adreno_set_gpu_halt(adreno_dev, 0);
 	ret = adreno_reset(device);
 	kgsl_mutex_unlock(&device->mutex, &device->mutex_owner);
 	/* if any other fault got in until reset then ignore */
@@ -1504,7 +1503,7 @@ replay:
 
 	kfree(replay);
 	/* restore halt indicator */
-	atomic_add(halt, &adreno_dev->halt);
+	adreno_set_gpu_halt(adreno_dev, halt);
 
 	return 1;
 }
@@ -2074,9 +2073,9 @@ int adreno_dispatcher_idle(struct adreno_device *adreno_dev)
 		dispatcher->mutex.owner == current)
 		BUG_ON(1);
 
-	adreno_get_gpu_halt(adreno_dev);
+	adreno_set_gpu_halt(adreno_dev, 1);
 
-	kgsl_mutex_unlock(&device->mutex, &device->mutex_owner);
+	mutex_unlock(&device->mutex);
 
 	ret = wait_for_completion_timeout(&dispatcher->idle_gate,
 			msecs_to_jiffies(ADRENO_IDLE_TIMEOUT));
@@ -2088,8 +2087,8 @@ int adreno_dispatcher_idle(struct adreno_device *adreno_dev)
 		ret = 0;
 	}
 
-	kgsl_mutex_lock(&device->mutex, &device->mutex_owner);
-	adreno_put_gpu_halt(adreno_dev);
+	mutex_lock(&device->mutex);
+	adreno_set_gpu_halt(adreno_dev, 0);
 	/*
 	 * requeue dispatcher work to resubmit pending commands
 	 * that may have been blocked due to this idling request

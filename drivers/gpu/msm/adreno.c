@@ -1861,9 +1861,12 @@ static int _adreno_start(struct adreno_device *adreno_dev)
 	status = adreno_perfcounter_start(adreno_dev);
 	if (status)
 		goto error_rb_stop;
+<<<<<<< HEAD
 
 	adreno_clear_gpu_halt(adreno_dev);
 
+=======
+>>>>>>> parent of 5b39625... msm: kgsl: Avoid race conditions with GPU halt variable
 
 	/* Start the dispatcher */
 	adreno_dispatcher_start(device);
