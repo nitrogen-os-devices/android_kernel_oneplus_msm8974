@@ -118,6 +118,11 @@ config QCOM_EARLY_RANDOM
 	  may not be truly random. Select this option to make an early call
 	  to get some random data to put in the pool. If unsure, say N.
 
+config STATE_HELPER
+        bool "State Helper"
+	depends on STATE_NOTIFIER
+	default y
+
 config MSM_LIMITER
 	bool "MSM Frequency Limiter Driver"
 	default y
