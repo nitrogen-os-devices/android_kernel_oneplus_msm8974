@@ -49,6 +49,7 @@ struct qmi_notify_event_work {
 	struct work_struct work;
 };
 static void qmi_notify_event_worker(struct work_struct *work);
+static void clean_txn_info(struct qmi_handle *handle);
 
 #define HANDLE_HASH_TBL_SZ 1
 static DEFINE_HASHTABLE(handle_hash_tbl, HANDLE_HASH_TBL_SZ);
