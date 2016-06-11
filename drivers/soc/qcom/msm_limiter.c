@@ -25,7 +25,7 @@
 /* Recommended to set below values from userspace. */
 #define FREQ_CONTROL			0
 #define DEBUG_MODE			0
-#define MPD_ENABLED			0
+#define MPD_ENABLED			1
 
 /*
  * Define SOC freq limits below.
