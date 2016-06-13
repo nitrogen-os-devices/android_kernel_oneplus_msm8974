@@ -31,7 +31,6 @@
 #include <trace/events/power.h>
 
 #ifdef CONFIG_MSM_LIMITER
-#include <linux/msm_thermal.h>
 #include <soc/qcom/limiter.h>
 #endif
 
